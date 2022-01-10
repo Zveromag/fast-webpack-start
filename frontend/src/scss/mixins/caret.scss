@@ -1,0 +1,73 @@
+// Use
+// @include caret; default values
+// @include caret($border-width: 1, $background-color: #fff);
+@mixin caret($position: relative,$caret-width: 5,$border-width:1,$direction: bottom,$border-color: #333,$background-color: transparent){
+
+  @if ($caret-width - $border-width) < 0 {
+    @error '$border-width greater than $caret-width';
+  }
+
+  position: $position;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+  @if $direction == top {
+    &::before {
+      top: 0;
+      left: 0;
+      border: $caret-width solid transparent;
+      border-bottom-color: $border-color;
+    }
+    &::after {
+      left: $border-width;
+      top: $border-width + $border-width;
+      border: ($caret-width - $border-width) solid transparent;
+      border-bottom-color: $background-color;
+    }
+  }
+  @else if $direction == right {
+    &::before {
+      top: 0;
+      left: 0;
+      border: $caret-width solid transparent;
+      border-left-color: $border-color;
+    }
+    &::after {
+      left: 0;
+      top: $border-width;
+      border: ($caret-width - $border-width) solid transparent;
+      border-left-color: $background-color;
+    }
+  }
+  @else if $direction == bottom {
+    &::before {
+      top: 0;
+      left: 0;
+      border: $caret-width solid transparent;
+      border-top-color: $border-color;
+    }
+    &::after {
+      left: $border-width;
+      top: 0;
+      border: ($caret-width - $border-width) solid transparent;
+      border-top-color: $background-color;
+    }
+  }
+  @else if $direction == left {
+    &::before {
+      top: 0;
+      left: 0;
+      border: $caret-width solid transparent;
+      border-right-color: $border-color;
+    }
+    &::after {
+      left: $border-width + $border-width;
+      top: $border-width;
+      border: ($caret-width - $border-width) solid transparent;
+      border-right-color: $background-color;
+    }
+  }
+}

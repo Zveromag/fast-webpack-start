@@ -1,0 +1,72 @@
+html {
+  font-size: $font-size-root;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+//@include font("OpenSans", "OpenSans-Regular");
+
+body {
+  font-family: 'OpenSans', sans-serif;
+  color: #585858;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-width: 320px;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: none;
+  padding-top: 60px;
+
+  @include min(1100) {
+    padding-top: 105px;
+  }
+}
+a {
+  transition: color .2s;
+  text-decoration: none;
+  color: $link-color;
+
+  &:hover {
+    color: $link-color;
+  }
+}
+ul, ol {
+  margin: 20px;
+}
+ul ul, ol ol {
+  margin: 0 20px;
+}
+
+strong, b {
+  font-family: 'OpenSans';
+  font-weight: 600;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 1250px;
+  width: 100%;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-grey {
+  color: $text-grey;
+}
+.error-hint {
+  display: none !important;
+}

@@ -1,0 +1,11 @@
+@mixin font($alias, $name, $thickness: 400, $style: normal) {
+  @font-face {
+    font-family: $alias;
+    src:
+      url('/local/templates/ump/fonts/' + $name + '.woff2') format('woff2'),
+      url('/local/templates/ump/fonts/' + $name + '.woff') format('woff');
+    font-weight: $thickness;
+    font-style: $style;
+    font-display: swap;
+  }
+}

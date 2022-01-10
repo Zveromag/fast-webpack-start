@@ -1,0 +1,17 @@
+{
+  "presets": [
+    ["@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "debug": false,
+        "corejs": 3,
+        "loose": true,
+        "modules": false
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/transform-runtime",
+    "@babel/plugin-syntax-dynamic-import"
+  ]
+}

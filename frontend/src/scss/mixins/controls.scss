@@ -1,0 +1,31 @@
+@mixin input-variant($color) {
+  border-color: $color;
+  &:focus {
+    @include control-shadow($color);
+  }
+}
+@mixin button-variant($color: $color-primary) {
+  background-color: $color;
+  border-color: $color;
+  color: #fff;
+  &:hover {
+    background-color: lighten($color, 5%);
+  }
+  &:active {
+    background-color: darken($color, 5%);
+  }
+  &:focus {
+    @include control-shadow($color);
+  }
+
+  &.has-loading {
+    &:hover,
+    &:active {
+      background-color: $color;
+    }
+    @include loading($color: #fff, $size: 20px);
+  }
+}
+@mixin control-shadow($color: $color-primary-light) {
+  box-shadow: 0 0 0 0.2rem rgba($color, 0.2);
+}

@@ -1,0 +1,10 @@
+/bitrix/
+/upload/
+/local/templates/ump/img/
+/local/templates/ump/css/
+/local/templates/ump/js/
+/local/templates/ump/media/
+/local/templates/ump/fonts/
+/local/templates/ump/icons/
+/node_modules/
+/cache/

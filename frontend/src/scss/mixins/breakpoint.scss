@@ -1,0 +1,15 @@
+// Media queries for Grid
+@mixin breakpoint($bp, $rule: min-width) {
+
+  $size: map-get($breakpoints, $bp);
+
+  @if $size == 0 {
+    @content;
+  }
+  @else {
+    @media (#{$rule}: $size) {
+      @content;
+    }
+  }
+
+}

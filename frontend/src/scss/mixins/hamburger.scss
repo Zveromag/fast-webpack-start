@@ -1,0 +1,56 @@
+// .hamburger {
+//   @include hamburger;
+
+//   &.is-active {
+//     @include hamburger-active;
+//   }
+// }
+//  @include hamburger(#777, 25px, 1px, 5px, 3px)
+
+$hamburger-height: 0px !default;
+$hamburger-gutter: 0px !default;
+
+@mixin hamburger($color: #333, $width: 30px, $height: 3px, $gutter: 5px, $radius: 0, $duration: 0.3s, $timing-function: ease) {
+
+  $hamburger-height: $height !global;
+  $hamburger-gutter: $gutter !global;
+
+  position: relative;
+  user-select: none;
+
+  &,
+  &::before,
+  &::after {
+    display: block;
+    width: $width;
+    height: $height;
+    border-radius: $radius;
+    background-color: $color;
+    transition: background-color $duration $timing-function, transform $duration $timing-function;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    top: -($height + $gutter);
+  }
+  &::after {
+    top: $height + $gutter;
+  }
+}
+
+@mixin hamburger-active {
+  background-color: transparent;
+
+  &::before {
+    transform: translateY($hamburger-gutter + $hamburger-height) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(-($hamburger-gutter + $hamburger-height)) rotate(-45deg);
+  }
+}

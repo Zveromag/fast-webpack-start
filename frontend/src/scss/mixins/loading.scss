@@ -1,0 +1,24 @@
+@mixin loading($color: royalblue, $width: 0.15rem, $size: 20px) {
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 100;
+    top: calc(50% - 0.5em);
+    left: calc(50% - 0.5em);
+    font-size: $size;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: $width solid $color;
+    border-left-color: transparent;
+    box-sizing: border-box;
+    background-color: transparent;
+    animation: loading 0.55s linear infinite;
+  }
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,7 @@
+// @include bgImage default cover
+// @include bgImage(contain)
+@mixin bgImage($size: cover, $position: center) {
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $position;
+}

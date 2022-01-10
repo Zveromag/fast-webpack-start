@@ -1,0 +1,39 @@
+@mixin divider($dir: 'horizontal', $weight: 1px, $border-color: #ddd, $bg-color: #fff) {
+  position: relative;
+
+  //  horizontal
+  @if ($dir == 'horizontal') {
+    background-color: $border-color;
+    height: $weight;
+    width: 100%;
+    margin: 1rem;
+  }
+  // vertical
+  @else {
+    padding: 1rem;
+    &::before {
+      content: '';
+      position: absolute;
+      width: $weight;
+      top: 1rem;
+      left: 50%;
+      margin-left: calc(#{$weight} / -2);
+      bottom: 1rem;
+      background-color: $border-color;
+    }
+  }
+
+  &[data-divider]::after {
+    content: attr(data-divider);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem;
+    font-size: 80%;
+    line-height: 1;
+    color: currentColor;
+    background-color: $bg-color;
+  }
+
+}

@@ -1,0 +1,58 @@
+image: ubuntu:latest
+
+before_script:
+  - apt-get update -qy
+  # package which contains stuff needed for building software
+  - apt-get install -y build-essential
+  - apt-get install -y autoconf
+  - apt-get install -y rsync
+  - apt-get install -y curl
+  - apt-get install -y lftp
+  - curl -sL https://deb.nodesource.com/setup_10.x | bash -
+  - apt-get install -y nodejs
+
+build_dev:
+  only:
+    - dev
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $HOST_PORT $HOST_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+    - echo "Update dev project"
+    - npm config set registry https://registry.npmjs.org/
+    # Install dependencies
+    - npm i
+    # Build frontend
+    - npm run build
+    # - npm run imagemin
+    # Sync to FTP
+    - rsync -e "ssh -p $HOST_PORT_DEV" --exclude-from='lftp-exclude-rx.txt' --verbose --progress --archive --chmod=D0755,F0644 --compress --delete . $SSH_USER@$HOST_IP:/home/bitrix/www
+  resource_group: prod
+
+build_master:
+  only:
+    - master
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client git -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -p $HOST_PORT_PROD $HOST_IP >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+
+    - echo "Update prod project"
+    - npm config set registry https://registry.npmjs.org/
+    # Install dependencies
+    - npm i
+    # Build frontend
+    - npm run build
+    # - npm run imagemin
+    # Sync to FTP
+    - rsync -e "ssh -p $HOST_PORT_PROD" --exclude-from='lftp-exclude-rx.txt' --verbose --progress --archive --chmod=D0755,F0644 --compress --delete . $SSH_USER@$HOST_IP:/home/bitrix/www
+  resource_group: prod

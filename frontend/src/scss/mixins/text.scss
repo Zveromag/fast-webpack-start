@@ -1,0 +1,26 @@
+@mixin text-truncate($truncate: ellipsis) {
+  overflow: hidden;
+  text-overflow: $truncate;
+  white-space: nowrap;
+}
+
+@mixin hide-text {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+// link-underlines((red 50%, transparent 75%), left 0 bottom 14px, 10px 1px, 45deg, (-2px -2px white, -2px 2px white, 2px -2px white, 2px 2px white))
+@mixin underlines-gradient(
+  $gradient: (currentColor, currentColor),
+  $gradient-position: 0 90%,
+  $gradient-size: 1px 1px,
+  $gradient-direction: to left,
+  $text-shadow: none
+) {
+  text-shadow: $text-shadow;
+  background-image: linear-gradient($gradient-direction, $gradient);
+  background-position: $gradient-position;
+  background-size: $gradient-size;
+  background-repeat: repeat-x;
+}

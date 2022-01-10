@@ -1,0 +1,61 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  line-height: 1.2rem;
+  vertical-align: middle;
+  padding: 10px 28px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+  background-color: transparent;
+  border: 1px solid $color-primary;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  transition: background-color .2s, border-color .2s, color .2s;
+
+  &[disabled] {
+    opacity: .3;
+    cursor: no-drop;
+  }
+}
+.btn--main {
+  background: $color-primary;
+  transition: background .2s;
+
+  &:hover {
+    background: $color-primary-light;
+  }
+}
+.btn--second {
+  background: #fff;
+  color: $color-primary;
+  transition: background .2s;
+
+  &:hover {
+    background: $grey-bg;
+  }
+}
+.btn--icon {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-left: 5px;
+  }
+}
+.btn--sw-text {
+  transform: skewX(8deg);
+  display: flex;
+  align-items: center;
+}
+.btn--sw {
+  background: $color-primary;
+  transition: background .2s;
+  transform: skewX(-8deg);
+  border-radius: 3px;
+}

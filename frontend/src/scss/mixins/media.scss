@@ -1,0 +1,35 @@
+@mixin max($size) {
+  @media (max-width: #{$size}px) {
+    @content;
+  }
+}
+
+@mixin min($size) {
+  @media (min-width: #{$size}px) {
+    @content;
+  }
+}
+
+@mixin hmax($size) {
+  @media (max-height: #{$size}px) {
+    @content;
+  }
+}
+
+@mixin hmin($size) {
+  @media (min-height: #{$size}px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin minmax($min, $max) {
+  @media (min-width: #{$min}px) and (max-width: #{$max}px) {
+    @content;
+  }
+}

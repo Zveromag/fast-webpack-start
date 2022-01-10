@@ -1,0 +1,33 @@
+// Colors
+$color-primary: #034ea2 !default;
+$color-primary-light: lighten(#034ea2, 10) !default;
+$link-color: #337ab7;
+$link-color-hover: #034ea2;
+$text-grey: #a7a7a7;
+$color-red: #ef454b !default;
+$color-success: #2ecc40 !default;
+$color-warning: #ff851b !default;
+$color-error: $color-red !default;
+$main-border: 1px solid #ededed;
+$btn-border: 2px solid #ededed;
+$grey-bg: #f5f5f5;
+
+//***** Grid
+$breakpoints: (
+  xs: 0,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+);
+
+//***** Font
+$font-sans: -apple-system,BlinkMacSystemFont,'Roboto',sans-serif !default;
+$font-sherif: Georgia, 'Times New Roman', Times, serif !default;
+$font-monospace: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-size-root: 16px !default;
+$base-line-height: 1.5 !default;
+
+//***** Base
+$border-radius: 0;
+$margin-bottom: 15px;
